@@ -1,17 +1,17 @@
-# deployment.yaml
 apiVersion: apps/v1
-kind: Deploymentclone
+kind: DaemonSet
 metadata:
-  name: my-nginx-copy
+  name: nginx-daemonset
+  labels:
+    tier: frontend
 spec:
-  replicas: 5
   selector:
     matchLabels:
-      app: nginx
+      tier: frontend
   template:
     metadata:
       labels:
-        app: nginx
+        tier: frontend
     spec:
       containers:
       - name: nginx
